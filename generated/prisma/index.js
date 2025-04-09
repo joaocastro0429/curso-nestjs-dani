@@ -124,7 +124,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/joaocastro/nest/curso-nestjs-dani/generated/prisma",
+      "value": "/home/joaocastro/Secretária/curso-nestjs-dani/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -138,7 +138,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/joaocastro/nest/curso-nestjs-dani/prisma/schema.prisma",
+    "sourceFilePath": "/home/joaocastro/Secretária/curso-nestjs-dani/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -156,7 +156,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:docker@localhost:5432/curso-nest?schema=public"
+        "value": "postgresql://postgres:docker@localhost:5432/curso-nest"
       }
     }
   },

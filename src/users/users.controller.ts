@@ -16,7 +16,7 @@ type BodyUser={
   name:String,
   age:number
 }
-@Controller("/users")
+@Controller("users")
 export class UserController{
   constructor(private createUserUserCase: createUserUserCase) {}    // // @Get("/helloUser")
     // // helloUser(){
@@ -57,17 +57,12 @@ export class UserController{
     // }
 
     @Post()
-    create(@Body()data:CreateUserDTO){
-      try{
-        console.log(this.createUserUserCase.execute(data))
-      return this.createUserUserCase.execute(data)
-
-      
-      }catch(err){
-        throw new HttpException(err.message, HttpStatus.BAD_REQUEST)
+    async create(@Body() data: CreateUserDTO) {
+      try {
+        return await this.createUserUserCase.execute(data)
+      } catch (err) {
+        throw new HttpException(err.message,HttpStatus.BAD_REQUEST)
       }
-      
-
     }
   }
   
