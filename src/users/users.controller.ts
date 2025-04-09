@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common'
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Query } from '@nestjs/common'
 import { randomUUID } from 'crypto'
 import { createUserUserCase } from './userCases/create-userCase'
 import { userModule } from './user.module'
@@ -18,8 +18,7 @@ type BodyUser={
 }
 @Controller("/users")
 export class UserController{
-  constructor(private readonly createUserUserCase:createUserUserCase){}
-    // // @Get("/helloUser")
+  constructor(private createUserUserCase: createUserUserCase) {}    // // @Get("/helloUser")
     // // helloUser(){
     // //     return "Seja bem Vindo(a) ao curso de nestjs"
     // // }
@@ -59,8 +58,15 @@ export class UserController{
 
     @Post()
     create(@Body()data:CreateUserDTO){
-      console.log(this.createUserUserCase.execute(data))
+      try{
+        console.log(this.createUserUserCase.execute(data))
       return this.createUserUserCase.execute(data)
+
+      
+      }catch(err){
+        throw new HttpException(err.message, HttpStatus.BAD_REQUEST)
+      }
+      
 
     }
   }
